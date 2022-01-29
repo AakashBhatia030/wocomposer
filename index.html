@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        xkcd mailer
+    </title>
+    <script>
+        function validateemail()  
+            {  
+            var x=document.email_subscription_form.user_email.value;  
+            var atposition=x.indexOf("@");  
+            var dotposition=x.lastIndexOf(".");  
+            if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+            alert("Please enter a valid e-mail address \n ");
+            return false;  
+            }}  
+    </script>
+</head>
+<body>
+    <form name="email_subscription_form" method="post" action="insert_email.php" onsubmit="return validateemail()">
+       Email: <input type="email" name="user_email">
+         <input type="submit">
+    </form>
+</body>
+</html>
