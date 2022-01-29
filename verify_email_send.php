@@ -2,7 +2,7 @@
 session_start();
 $email_value = $_SESSION['email_passer'];
 
-  require 'vendor/autoload.php';
+ // require 'vendor/autoload.php';
   require 'database.php';
   
 
