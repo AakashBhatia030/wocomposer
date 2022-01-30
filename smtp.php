@@ -10,7 +10,7 @@ ini_set('smtp_ssl','ssl');
 ini_set('host','smtp.gmail.com');
 echo "1";
 
-echo ini_get("SMTP");
+echo ini_get("password");
 $to = "aakashbhatia030@gmail.com";
 $subject = "Test mail";
 $message = "Hello! This is a simple email message.";
