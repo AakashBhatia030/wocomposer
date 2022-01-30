@@ -37,7 +37,7 @@ $retval = mail($to,$subject,$message,$headers);
       "Messages":[
               {
                       "From": {
-                              "Email": "dumyui81@gmailcom",
+                              "Email": "dumyui81@gmail.com",
                               "Name": "Mailjet Pilot"
                       },
                       "To": [
