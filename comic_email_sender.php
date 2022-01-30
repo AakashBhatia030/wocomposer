@@ -1,11 +1,11 @@
 <?php
  // require 'vendor/autoload.php';
   require 'database.php';
-  use \Mailjet\Resources;
+ // use \Mailjet\Resources;
   
 $key=getenv('thekey');
 $value=getenv('thevalue');
-  $mj = new \Mailjet\Client($key,$value,true,['version' => 'v3.1']);
+ // $mj = new \Mailjet\Client($key,$value,true,['version' => 'v3.1']);
   
   $url = "https://c.xkcd.com/random/comic/";
 $ch  = curl_init();
@@ -31,7 +31,7 @@ mysqli_stmt_execute($allUserStatement);
 
 $result = mysqli_stmt_get_result($allUserStatement);
 
-if (mysqli_num_rows($result) > 0) {
+if (mysqli_num_rows($result) > 0) { 
   // output data of each row
   while($row = mysqli_fetch_assoc($result)) {
     if($row["verification_status"]==1 && $row["subscription_status"]==1)
@@ -39,7 +39,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "id: " . $row["email_id"]. "<br>";
  $unsub_token=md5($row["unsub_token"]);
 
-$body = [
+ /*
     'Messages' => [
       [
         'From' => [
@@ -54,7 +54,10 @@ $body = [
         ],
         'Subject' => "Your random xkcd comic",
         'TextPart' => "My first Mailjet email",
-        'HTMLPart' => "<html>
+        'HTMLPart' => 
+        */
+$body = 
+ "<html>
         <head>
         <title>Your email  is listed in our XKCD comics subscribers.</title>
         </head>
@@ -66,17 +69,42 @@ $body = [
 
 
         </body>
-        </html>",
+        </html>";
+        /*,
         'CustomID' => "AppGettingStartedTest"
       ]
     ]
-  ];
-  $response = $mj->post(Resources::$Email, ['body' => $body]);
-  $response->success() && var_dump($response->getData());
+  ];*/
 
-}
-}} else {
-  echo "0 results";
-}
+
+		$headers   = array();
+		$headers[] = "To: {$to}";
+		$headers[] = 'From: dumy <dumyui81@gmail.com>';
+		$headers[] = 'X-Mailer: PHP/' . phpversion();
+		$headers[] = 'MIME-Version: 1.0';
+	
+    $attachments=array();
+		if ( ! empty( $attachments )) {
+			$boundary  = md5( time() );
+			$headers[] = 'Content-type: multipart/mixed;boundary="' . $boundary . '"';
+		} else {
+			$headers[] = 'Content-type: text/html; charset=UTF-8';
+		}
+			$output   = array();
+			$output[] = '--' . $boundary;
+			$output[] = 'Content-type: text/html; charset="utf-8"';
+			$output[] = 'Content-Transfer-Encoding: 8bit';
+			$output[] = '';
+			$output[] = $body;
+			$output[] = '';
+
+			mail( $to, $subject, implode( "\r\n", $output ), implode( "\r\n", $headers ) );
+	}
+	
+
+//  $response = $mj->post(Resources::$Email, ['body' => $body]);
+  //$response->success() && var_dump($response->getData());
+
+}}
   //
 ?>
