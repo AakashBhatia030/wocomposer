@@ -7,7 +7,7 @@ ini_set("smtp_port","465");
 ini_set('sendmail_from', 'dumyui81@gmail.com');       
 ini_set('smtp_ssl','ssl');
 ini_set('host','smtp.gmail.com');
-
+echo "1";
 
 
 $to = "aakashbhatia030@gmail.com";
