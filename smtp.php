@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 ini_set("SMTP","smtp.gmail.com" );
 ini_set("smtp_server","smtp.gmail.com" );
 ini_set('username',"dumyui81@gmail.com");
