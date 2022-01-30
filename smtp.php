@@ -13,7 +13,7 @@ ini_set('host','smtp.gmail.com');
 $to = "aakashbhatia030@gmail.com";
 $subject = "Test mail";
 $message = "Hello! This is a simple email message.";
-$from = "person1@gmail.com";
+$from = "dumyui81@gmail.com";
 $headers = "From:" . $from;
 $retval = mail($to,$subject,$message,$headers);
    if( $retval == true )  
