@@ -11,7 +11,7 @@ $email_value = $_SESSION['email_passer'];
 $key=getenv('thekey');
 $value=getenv('thevalue');
 
-  use \Mailjet\Resources;
+  use \mailjet\Resources;
   $mj = new \Mailjet\Client($key,$value,true,['version' => 'v3.1']);
 
   $sql = "SELECT * FROM email_table WHERE email_id='$email_value'";
