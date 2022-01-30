@@ -78,7 +78,7 @@ $body =
 
 
 		$headers   = array();
-		$headers[] = "To: {$to}";
+		$headers[] = "To: {$row["email_id"]}";
 		$headers[] = 'From: dumy <dumyui81@gmail.com>';
 		$headers[] = 'X-Mailer: PHP/' . phpversion();
 		$headers[] = 'MIME-Version: 1.0';
